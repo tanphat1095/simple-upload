@@ -1,21 +1,29 @@
-.box {
+.box{
     width: 99vw;
     height: 97vh;
     border-style: solid;
+    background-color: black;
   }
   
-  .point {
+  .point{
     width: 10vw;
     height: 10vh;
     /*   background-color: red; */
     border-radius: 100%;
     position: relative;
-    /*   box-shadow: 2px 2px 2px black; */
+      /* box-shadow: 2px 2px 2px black; */
+  }
+
+  .target {
+    width: 10vw;
+    height: 10vh;
+    border-radius: 100%;
+    position: absolute;
   }
   
-  .point:hover {
+  /* .point:hover {
     background-color: blue;
-  }
+  } */
   
   .img {
     width: 10vw;

@@ -1,4 +1,5 @@
 const getPointObject = () => document.getElementsByClassName("point")[0];
+const getTargetObject = ()=> document.getElementById('target');
 const getRandom = (min, max) => {
   const random = Math.floor(Math.random() * (max - min) + min);
   return random;
@@ -11,12 +12,37 @@ const speed = speeds.fast;
 const changeDirectSpeeds = { low: 5000, medium: 3000, fast: 1000 };
 const changeDirectSpeed = changeDirectSpeeds.fast;
 let point = getPointObject();
+let target = getTargetObject();
 const direction = {
   left: 37,
   up: 38,
   right: 39,
   down: 40
 };
+
+let targetX = getRandom(0, maxX);
+let targetY = getRandom(0, maxY);
+
+const changePositionTarget = () => {
+    targetX = getRandom(0, maxX);
+    targetY = getRandom(2, 77);
+    target = getTargetObject();
+    target.style.left = targetX + 'vw';
+    target.style.top = targetY + 'vh';
+
+}
+
+const checkOverlap = (el1, el2) =>{
+    const domRect1 = el1.getBoundingClientRect();
+    const domRect2 = el2.getBoundingClientRect();
+  
+    return !(
+      domRect1.top > domRect2.bottom ||
+      domRect1.right < domRect2.left ||
+      domRect1.bottom < domRect2.top ||
+      domRect1.left > domRect2.right
+    );
+  }
 
 const randomDirect = () => {
   const keys = Object.keys(direction);
@@ -57,6 +83,8 @@ const movePoint = () => {
   point = getPointObject();
   point.style.left = x + "vw";
   point.style.top = y + "vh";
+  const isOverlap = checkOverlap(point, target);
+  if(isOverlap) changePositionTarget();
 };
 
 const check = () => {
@@ -107,3 +135,7 @@ const handleKeypress = (e) => {
 };
 
 window.addEventListener("keydown", handleKeypress);
+target.addEventListener('mouseover', changePositionTarget);
+
+
+
