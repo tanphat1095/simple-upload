@@ -117,12 +117,18 @@ const randomMove = () => {
 
 const changePosition = (e) => {
   point = getPointObject();
-  var ele = e?.target || point;
-  ele.style.left = getRandom(0, maxX) + "vw";
-  ele.style.top = getRandom(0, maxY) + "vh";
+  const newX = getRandom(0, maxX);
+  const newY =getRandom(0, maxY);
+  direct = randomDirect();
+  x = newX;
+  y = newY;
+  point.style.left = newX + "vw";
+  point.style.top = newY + "vh";
 };
 
-point.addEventListener("mouseover", changePosition);
+point.addEventListener("mouseover", ()=>{ 
+    direct = randomDirect();
+});
 let timer = setInterval(randomMove, speed);
 let timer2 = setInterval(() => {
   direct = randomDirect();

@@ -3,6 +3,7 @@
     height: 100%;
     border-style: solid;
     background-color: black;
+    position: relative;
   }
   
   .point{
@@ -10,7 +11,7 @@
     height: 10vh;
     /*   background-color: red; */
     border-radius: 100%;
-    position: relative;
+    position: absolute;
       /* box-shadow: 2px 2px 2px black; */
   }
 
