@@ -1,5 +1,8 @@
 const getPointObject = () => document.getElementsByClassName("point")[0];
 const getTargetObject = ()=> document.getElementById('target');
+let count = 0;
+const getCount = () => document.getElementById('count');
+let countdiv  = getCount();
 const getRandom = (min, max) => {
   const random = Math.floor(Math.random() * (max - min) + min);
   return random;
@@ -84,7 +87,12 @@ const movePoint = () => {
   point.style.left = x + "vw";
   point.style.top = y + "vh";
   const isOverlap = checkOverlap(point, target);
-  if(isOverlap) changePositionTarget();
+  if(isOverlap) {
+    changePositionTarget();
+    count += 1;
+    countdiv = getCount();
+    countdiv.innerHTML = count;
+  }
 };
 
 const check = () => {
